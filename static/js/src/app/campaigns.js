@@ -37,9 +37,9 @@ function launch() {
                 if (send_by_date != "") {
                     send_by_date = moment(send_by_date, "MMMM Do YYYY, h:mm a").utc().format()
                 }
-                var complete_date = $("#send_by_date").val()
-                if (complete_date != "") {
-                    complete_date = moment(complete_date, "MMMM Do YYYY, h:mm a").utc().format()
+                var complete_by_date = $("#complete_by_date").val()
+                if (complete_by_date != "") {
+                    complete_by_date = moment(complete_by_date, "MMMM Do YYYY, h:mm a").utc().format()
                 }
                 campaign = {
                     name: $("#name").val(),
@@ -55,7 +55,7 @@ function launch() {
                     },
                     launch_date: moment($("#launch_date").val(), "MMMM Do YYYY, h:mm a").utc().format(),
                     send_by_date: send_by_date || null,
-                    complete_date: complete_date || null,
+                    complete_by_date: complete_by_date || null,
                     groups: groups,
                 }
                 // Submit the campaign
