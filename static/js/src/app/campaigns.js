@@ -303,7 +303,7 @@ $(document).ready(function () {
         "useCurrent": false,
         "format": "MMMM Do YYYY, h:mm a"
     })
-    $("#complete_date").datetimepicker({
+    $("#complete_by_date").datetimepicker({
         "widgetPositioning": {
             "vertical": "bottom"
         },
