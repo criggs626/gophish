@@ -94,6 +94,19 @@ func (w *DefaultWorker) Start() {
 				w.mailer.Queue(msc)
 			}(cid, msc)
 		}
+		// Manage Scheduled Completion
+		campaigns, err := models.GetCampaigns(1)
+		if err != nil {
+			log.Error(err)
+			return
+		}
+		currentTime := time.Now().UTC()
+		for _, c := range campaigns {
+			if !c.CompleteByDate.IsZero() && c.CompleteByDate.Before(currentTime) && c.Status != "Completed" {
+				models.CompleteCampaign(c.Id, 1)
+				log.Info("Scheduled Completion")
+			}
+		}
 	}
 }
 
